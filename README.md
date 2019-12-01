@@ -1,5 +1,13 @@
 # Angular8MyProject
 
+## Andular8（Angular 前端）+ Gin (Go 後端) - 前後端分離。( 使用 JWT 驗證 )
+## 此案，請撘配 [my-gin-github 後端](https://github.com/wangchenshu/my-gin-github) 一起服用。
+## 目前還是初版，只有用戶驗證及登入功能。
+## 直接 clone 下來
+## npm install
+## npm start 即可 ( 有加上 proxy.config )
+## 請註意，目前是初版，只有登入功能及一支測試 API。
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
 ## Development server
