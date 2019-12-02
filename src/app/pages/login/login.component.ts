@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * userLogin - user login
+   * login - user login
    */
-  userLogin(): void {
+  login(): void {
     let user = UserMaker.create({
       name: this.name,
       password: this.password
@@ -47,20 +47,11 @@ export class LoginComponent implements OnInit {
             this.loginSuccess = true;
             this.successMessage = 'Login Successful.';
             alert('login success');
+            this.router.navigate(['/home']);
           }
         }, () => {
           this.invalidLogin = true;
           this.loginSuccess = false;
         });
-  }
-
-  /**
-   * test - only for test
-   */
-  test(): void {
-    this.authenticationService.test()
-      .subscribe(res => {
-        console.log(res);
-      })
   }
 }

@@ -11,8 +11,8 @@ import { MessageService } from './message.service';
 })
 export class AuthenticationService {
 
-  private _loginUrl = 'http://localhost:4200/user/login';
-  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
+  private _loginUrl = 'http://localhost:4200/api/user/login';
+  USER_NAME_SESSION = 'authenticatedUser';
   user: User;
 
   constructor(
@@ -41,24 +41,13 @@ export class AuthenticationService {
 
   /**
    * loginUser - login user
-   * @param user 
+   * @param user
    */
   login(user: User) {
     return this.http.post<any>(this._loginUrl, user, { responseType: 'text' as 'json' })
       .pipe(
         tap(_ => this.log("login")),
         catchError(this.handleError(`login: ${user}`))
-      );
-  }
-
-  /**
-   * test - only for test
-   */
-  test() {
-    return this.http.get<any>('http://localhost:4200/products')
-      .pipe(
-        tap(_ => this.log("test")),
-        catchError(this.handleError(`test`))
       );
   }
 
@@ -80,7 +69,8 @@ export class AuthenticationService {
    * logout - user logout
    */
   logout() {
-    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    // sessionStorage.removeItem(this.USER_NAME_SESSION);
+    localStorage.removeItem('token');
     this.user = {
       name: '',
       password: ''
@@ -91,7 +81,7 @@ export class AuthenticationService {
    * isUserLoggedIn - is user loggedin?
    */
   isUserLoggedIn() {
-    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION);
     return user === null ? false : true;
   }
 
@@ -99,12 +89,12 @@ export class AuthenticationService {
    * getLoggedInUserName - get loggedin user name
    */
   getLoggedInUserName() {
-    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION);
     return user === null ? '' : user;
   }
 
-  /** Log a ProductService message with the MessageService */
+  /** Log a AuthenticationService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`ProductService: ${message}`);
+    this.messageService.add(`AuthenticationService: ${message}`);
   }
 }

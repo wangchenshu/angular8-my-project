@@ -1,1 +1,15 @@
-<p>home works!</p>
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
+<br />
+
+<button (click)="getProducts()">Get Products</button>
+<button (click)="clearProducts()">Clear Products</button>
+
+<br /><br />
+<label>Product</label>
+<mat-list>
+ <mat-list-item *ngFor="let product of products"> {{ product.ID }}  {{ product.Name }} {{ product.Price }} {{ product.Description }} </mat-list-item>
+</mat-list>
+
