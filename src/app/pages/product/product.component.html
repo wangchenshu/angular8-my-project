@@ -1,0 +1,9 @@
+<label>Show Products</label>
+<br />
+<button (click)="getProducts()">Get Products</button>
+<button (click)="clearProducts()">Clear Products</button>
+<button (click)="goBack()">Back</button>
+<br />
+<mat-list>
+ <mat-list-item *ngFor="let product of products"> {{ product.id }}  {{ product.name }} {{ product.price }} {{ product.description }} </mat-list-item>
+</mat-list>

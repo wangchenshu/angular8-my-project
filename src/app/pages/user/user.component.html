@@ -1,0 +1,9 @@
+<label>Show Users</label>
+<br />
+<button (click)="getUsers()">Get Users</button>
+<button (click)="clearUsers()">Clear Users</button>
+<button (click)="goBack()">Back</button>
+<br />
+<mat-list>
+ <mat-list-item *ngFor="let user of users"> {{ user.name }} </mat-list-item>
+</mat-list>

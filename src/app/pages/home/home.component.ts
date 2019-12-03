@@ -11,11 +11,8 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class HomeComponent implements OnInit {
 
-  products: Product[];
-
   constructor(
     private authenticationService: AuthenticationService,
-    private productService: ProductService,
     private router: Router) {
   }
 
@@ -26,23 +23,9 @@ export class HomeComponent implements OnInit {
    * logout - logout
    */
   logout(): void {
-    if (confirm('Logout?')) {
+    if (confirm('Continue Logout?')) {
       this.authenticationService.logout();
       this.router.navigate(['login']);
     }
-  }
-
-  /**
-   * getProducts - get all products
-   */
-  getProducts(): void {
-    this.productService.getProducts()
-      .subscribe(products => {
-        this.products = products;
-      })
-  }
-
-  clearProducts(): void {
-    this.products = [];
   }
 }

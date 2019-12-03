@@ -3,12 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Product } from '../model/product';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class UserService {
 
   constructor(
     private http: HttpClient,
@@ -36,16 +36,16 @@ export class ProductService {
   /**
    * test - only for test
    */
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:4200/api/products')
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>('http://localhost:4200/api/users')
       .pipe(
-        tap(_ => this.log("get products")),
-        catchError(this.handleError<Product[]>(`get products`))
+        tap(_ => this.log("get users")),
+        catchError(this.handleError<User[]>(`get users`))
       );
   }
 
-  /** Log a ProductService message with the MessageService */
+  /** Log a UserService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`ProductService: ${message}`);
+    this.messageService.add(`UserService: ${message}`);
   }
 }

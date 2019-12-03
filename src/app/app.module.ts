@@ -20,12 +20,16 @@ import { MatListModule } from '@angular/material/list';
 // akita
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { environment } from 'src/environments/environment';
+import { ProductComponent } from './pages/product/product.component';
+import { UserComponent } from './pages/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ProductComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
