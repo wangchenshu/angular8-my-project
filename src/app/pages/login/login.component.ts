@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserMaker, User } from '../../model/user'
 import { AuthenticationService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
+import { SessionStore } from 'src/app/store/store/session.store';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   loginSuccess = false;
 
   constructor(
+    private sessionStore: SessionStore,
     private router: Router,
     private authenticationService: AuthenticationService) { }
 
@@ -43,6 +45,8 @@ export class LoginComponent implements OnInit {
             this.loginSuccess = false;
           } else {
             localStorage.setItem('token', token);
+            this.sessionStore.update({ name: user.name, token: token });
+
             this.invalidLogin = false;
             this.loginSuccess = true;
             this.successMessage = 'Login Successful.';
