@@ -3,10 +3,10 @@
  */
 export class Product {
   constructor(
-    public ID: number,
-    public Name: string,
-    public Price: string,
-    public Description: string) {
+    public id: number,
+    public name: string,
+    public price: string,
+    public description: string) {
   };
 }
 
@@ -16,10 +16,10 @@ export class Product {
 export class ProductMaker {
   static create(product: Product) {
     return new Product(
-      product.ID,
-      product.Name,
-      product.Price,
-      product.Description
+      product.id,
+      product.name,
+      product.price,
+      product.description
     );
   }
 }

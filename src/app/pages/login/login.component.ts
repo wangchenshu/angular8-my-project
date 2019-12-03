@@ -37,10 +37,8 @@ export class LoginComponent implements OnInit {
 
     this.authenticationService.login(user)
       .subscribe(
-        res => {
-          let token = res.split('<br>')[1].trim();
-
-          if (res == undefined) {
+        token => {
+          if (token == undefined) {
             this.invalidLogin = true;
             this.loginSuccess = false;
           } else {
