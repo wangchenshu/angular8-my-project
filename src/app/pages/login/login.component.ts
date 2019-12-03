@@ -38,9 +38,10 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(user)
       .subscribe(
         token => {
-          if (token == undefined) {
+          if (token === undefined || token === 'null') {
             this.invalidLogin = true;
             this.loginSuccess = false;
+            alert('login fail');
           } else {
             localStorage.setItem('token', token);
             this.sessionStore.update({ name: user.name, token: token });
@@ -54,6 +55,7 @@ export class LoginComponent implements OnInit {
         }, () => {
           this.invalidLogin = true;
           this.loginSuccess = false;
+          alert('login fail');
         });
   }
 }
